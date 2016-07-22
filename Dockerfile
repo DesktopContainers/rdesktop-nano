@@ -7,5 +7,6 @@ RUN apt-get -q -y update && \
 
 ADD xsession /home/app/.xsession
     
-RUN chown app.app /home/app/.xsession; \
+RUN touch /home/app/.vnc/rdesktop.log; \
+    chown app.app /home/app/.xsession /home/app/.vnc/rdesktop.log; \
     echo "#!/bin/bash\nrdesktop \$*\n" > /bin/ssh-app.sh
