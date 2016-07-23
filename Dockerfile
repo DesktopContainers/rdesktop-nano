@@ -10,6 +10,6 @@ ADD xsession /home/app/.xsession
 RUN mkdir /home/app/.vnc && \
     touch /home/app/.vnc/rdesktop.log; \
     chown app.app -R /home/app/.xsession /home/app/.vnc; \
-    echo '#!/bin/bash\nrdesktop -x m -g "$VNC_SCREEN_RESOLUTION" -P -D $RDESKTOP_OPTS $RDESKTOP_SERVER &>> /home/app/.vnc/rdesktop.log\n' > /bin/ssh-app.sh
-    
-RUN sed -i 's,exec ,,g' /opt/entrypoint.sh
+    echo '#!/bin/bash\nrdesktop -x m -g "$VNC_SCREEN_RESOLUTION" -P -D $RDESKTOP_OPTS $RDESKTOP_SERVER &>> /home/app/.vnc/rdesktop.log\n' > /bin/ssh-app.sh; \
+    \
+    sed -i 's,exec ,,g' /opt/entrypoint.sh;
