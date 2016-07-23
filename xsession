@@ -1,13 +1,15 @@
 #!/bin/bash
-if [ -z ${RDESKTOP_KEEP_ALIVE+x} ]; then
+function rdesktop-connect {
     rdesktop -x m -g "$VNC_SCREEN_RESOLUTION" -P -D \
              $RDESKTOP_OPTS $RDESKTOP_SERVER \
              &>> /home/app/.vnc/rdesktop.log
+}
+
+if [ -z ${RDESKTOP_KEEP_ALIVE+x} ]; then
+    rdesktop-connect
 else
     while true; do
-        rdesktop -x m -g "$VNC_SCREEN_RESOLUTION" -P -D \
-                 $RDESKTOP_OPTS $RDESKTOP_SERVER \
-                 &>> /home/app/.vnc/rdesktop.log;
+        rdesktop-connect
         sleep 1
     done
 fi
