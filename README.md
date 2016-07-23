@@ -6,6 +6,8 @@ small rdesktop Docker container for perfect use with a Terminal Server.
 
 it uses the same screen resolution as the underlying vnc server
 
+you can use env variable RDESKTOP\_KEEP\_ALIVE set to anything to enable reconnections after rdesktop dies, quits etc.
+
 ### Simple SSH X11 Forwarding
 
 Since it is an X11 GUI software, usage is in two steps:
