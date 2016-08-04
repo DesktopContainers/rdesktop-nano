@@ -1,12 +1,23 @@
 # rdesktop nano
+_rdesktop nano_
 
 small rdesktop Docker container for perfect use with a Terminal Server.
+
+It's based on __DesktopContainers/base-debian__
 
 ## Usage: Run the Client
 
 it uses the same screen resolution as the underlying vnc server
 
-you can use env variable RDESKTOP\_KEEP\_ALIVE set to anything to enable reconnections after rdesktop dies, quits etc.
+# Environment variables and defaults
+
+* __RDESKTOP\_SERVER__
+ * set this to rdp server address
+* __RDESKTOP\_OPTS__
+ * default not set use this to set the options for rdesktop. see command line options of rdesktop
+* __RDESKTOP\_KEEP\_ALIVE__
+ * set this to any value e.g. true to enable reconnections after rdesktop dies, quits etc.
+
 
 ### Simple SSH X11 Forwarding
 
