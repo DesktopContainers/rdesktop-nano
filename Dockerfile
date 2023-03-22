@@ -13,7 +13,7 @@ RUN apt-get -q -y update && \
     \
     echo "X11UseLocalhost no" >> /etc/ssh/sshd_config; \
     \
-    git clone https://github.com/kanaka/websockify.git /opt/websockify && \
+    git clone https://github.com/novnc/websockify.git /opt/websockify && \
     rm -rf /opt/websockify/.git; \
     \
     touch /var/log/null && \
