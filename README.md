@@ -71,9 +71,9 @@ it uses the same screen resolution as the underlying vnc server
 Run the container with this command:
 
   ```
-  docker run -d --name rdesktop-nano -p 5901:5901 -p 80:80 ghcr.io/desktopcontainers/rdesktop
+  docker run -d -e 'RDESKTOP_OPTS=-k de -d MYDOMAIN -u johndoe' -e 'RDESKTOP_SERVER=172.10.1.1' --name rdesktop-nano -p 5901:5901 -p 80:80 ghcr.io/desktopcontainers/rdesktop
   ```
-  
+
 Connect to the container.  In the vnc connection string, type this:
 
 "ipaddress:1"
