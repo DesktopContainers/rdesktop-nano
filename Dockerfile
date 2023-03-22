@@ -2,22 +2,20 @@ FROM debian:bullseye
 
 ENV LANG=C.UTF-8 DEBIAN_FRONTEND=noninteractive
 RUN apt-get -q -y update && \
-    apt-get -q -y install python \
-                          tightvncserver \
+    apt-get -q -y install tightvncserver \
                           openssh-server \
                           rdesktop \
-                          git && \
+                          websockify && \
     apt-get -q -y clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list; \
     \
     echo "X11UseLocalhost no" >> /etc/ssh/sshd_config; \
     \
-    git clone https://github.com/novnc/websockify.git /opt/websockify && \
-    rm -rf /opt/websockify/.git; \
-    \
     touch /var/log/null && \
-    chmod 444 /var/log/null; true
+    chmod 444 /var/log/null; \
+    \
+    mkdir /opt/websockify
 
 ADD app-sh.sh /bin/app-sh.sh
 RUN useradd -ms /bin/app-sh.sh app
