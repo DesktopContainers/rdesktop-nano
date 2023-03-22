@@ -3,14 +3,15 @@ _rdesktop nano_
 
 small rdesktop Docker container for perfect use with a Terminal Server.
 
-It's based on __debian:jessie__
+It's based on __debian:bullseye__
 
 ## Changelogs
 
 * 2023-03-20
     * github action to build container
     * implemented ghcr.io as new registry
-    
+    * upgrade from `jessie` to `bullseye`
+
 ## Usage: Run the Client
 
 it uses the same screen resolution as the underlying vnc server

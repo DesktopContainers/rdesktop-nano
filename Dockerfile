@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:bullseye
 
 ENV LANG=C.UTF-8 DEBIAN_FRONTEND=noninteractive
 RUN apt-get -q -y update && \
