@@ -1,7 +1,5 @@
 FROM debian:jessie
 
-MAINTAINER MarvAmBass (https://github.com/DesktopContainers)
-
 ENV LANG=C.UTF-8 DEBIAN_FRONTEND=noninteractive
 RUN apt-get -q -y update && \
     apt-get -q -y install python \

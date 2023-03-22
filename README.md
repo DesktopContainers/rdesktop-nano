@@ -5,6 +5,12 @@ small rdesktop Docker container for perfect use with a Terminal Server.
 
 It's based on __debian:jessie__
 
+## Changelogs
+
+* 2023-03-20
+    * github action to build container
+    * implemented ghcr.io as new registry
+    
 ## Usage: Run the Client
 
 it uses the same screen resolution as the underlying vnc server
@@ -63,7 +69,7 @@ it uses the same screen resolution as the underlying vnc server
 
 Run the container with this command:
 
-    docker run -d --name debian-base-system -p 5901:5901 -p 80:80 desktopcontainers/base-debian
+    docker run -d --name debian-base-system -p 5901:5901 -p 80:80 ghcr.io/desktopcontainers/rdesktop
 
 Connect to the container.  In the vnc connection string, type this:
 
@@ -77,7 +83,7 @@ The default password is "debian".
 Since it is an X11 GUI software, usage is in two steps:
   1. Run a background container as server or start existing one.
 
-        docker start rdesktop-nano || docker run -d --name rdesktop-nano -e 'RDESKTOP_OPTS=-k de -d MYDOMAIN -u johndoe' -e 'RDESKTOP_SERVER=172.10.1.1' desktopcontainers/rdesktop-nano
+        docker start rdesktop-nano || docker run -d --name rdesktop-nano -e 'RDESKTOP_OPTS=-k de -d MYDOMAIN -u johndoe' -e 'RDESKTOP_SERVER=172.10.1.1' ghcr.io/desktopcontainers/rdesktop
 
   2. Connect to the server using `ssh -X` (as many times you want).
      _Logging in with `ssh` automatically opens a rdesktop window_
