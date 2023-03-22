@@ -70,8 +70,10 @@ it uses the same screen resolution as the underlying vnc server
 
 Run the container with this command:
 
-    docker run -d --name debian-base-system -p 5901:5901 -p 80:80 ghcr.io/desktopcontainers/rdesktop
-
+  ```
+  docker run -d --name rdesktop-nano -p 5901:5901 -p 80:80 ghcr.io/desktopcontainers/rdesktop
+  ```
+  
 Connect to the container.  In the vnc connection string, type this:
 
 "ipaddress:1"
@@ -84,10 +86,14 @@ The default password is "debian".
 Since it is an X11 GUI software, usage is in two steps:
   1. Run a background container as server or start existing one.
 
-        docker start rdesktop-nano || docker run -d --name rdesktop-nano -e 'RDESKTOP_OPTS=-k de -d MYDOMAIN -u johndoe' -e 'RDESKTOP_SERVER=172.10.1.1' ghcr.io/desktopcontainers/rdesktop
+  ```
+  docker start rdesktop-nano || docker run -d --name rdesktop-nano -e 'RDESKTOP_OPTS=-k de -d MYDOMAIN -u johndoe' -e 'RDESKTOP_SERVER=172.10.1.1' ghcr.io/desktopcontainers/rdesktop
+  ```
 
   2. Connect to the server using `ssh -X` (as many times you want).
      _Logging in with `ssh` automatically opens a rdesktop window_
 
-        ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
-        -X app@$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' rdesktop-nano)
+  ```
+  ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
+  -X app@$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' rdesktop-nano)
+  ```
