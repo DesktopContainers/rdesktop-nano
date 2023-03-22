@@ -17,7 +17,7 @@ RUN apt-get -q -y update && \
     rm -rf /opt/websockify/.git; \
     \
     touch /var/log/null && \
-    chmod 444 /var/log/null
+    chmod 444 /var/log/null; true
 
 ADD app-sh.sh /bin/app-sh.sh
 RUN useradd -ms /bin/app-sh.sh app
